@@ -3,7 +3,6 @@ import { EvmNFT } from "./nft-list";
 import { Suspense, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 const handleIPFS = (url: string) => (url.startsWith("ipfs://") ? url.replace("ipfs://", "https://ipfs.io/ipfs/") : url);
 

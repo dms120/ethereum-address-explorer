@@ -52,6 +52,7 @@ export default function AddressPage() {
 					setError("Your ENS cannot be resolved");
 				}
 			} catch (error) {
+				console.error(error);
 				setError("Your ENS cannot be resolved");
 			}
 		};
