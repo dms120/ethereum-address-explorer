@@ -15,6 +15,7 @@ export async function resolveENSDomain(address: string) {
     const response = await Moralis.EvmApi.resolve.resolveENSDomain({
         domain: address,
     });
+
     const json = response?.toJSON();
     return json?.address
 }
