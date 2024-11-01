@@ -1,9 +1,8 @@
-import { EvmChain } from "@moralisweb3/common-evm-utils";
-import Moralis from "moralis";
 import { useEffect, useMemo, useState } from "react";
 import Token from "./token";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getUSDBalance } from "@/lib/utils";
+import { getWalletTokenBalancesPrice } from "@/app/actions";
 
 export interface EvmToken {
 	name: string;
@@ -38,13 +37,9 @@ export default function TokensList({ address }: AddressParams) {
 		}
 
 		const fetchTokens = async () => {
-			const chain = EvmChain.ETHEREUM;
-			const response = await Moralis.EvmApi.wallets.getWalletTokenBalancesPrice({
-				address,
-				chain,
-			});
+			const result = await getWalletTokenBalancesPrice(address);
 
-			setTokens(response.result as []);
+			setTokens(result as unknown as EvmToken[]);
 			setIsLoading(false);
 		};
 		fetchTokens();

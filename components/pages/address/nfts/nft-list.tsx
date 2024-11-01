@@ -1,5 +1,3 @@
-import { EvmChain } from "@moralisweb3/common-evm-utils";
-import Moralis from "moralis";
 import { useEffect, useState } from "react";
 import NFT from "./nft";
 import {
@@ -11,6 +9,7 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getWalletNFTs } from "@/app/actions";
 
 interface AddressParams {
 	address: string;
@@ -42,12 +41,7 @@ export default function NFTList({ address }: AddressParams) {
 		}
 
 		const fetchNFTs = async () => {
-			const chain = EvmChain.ETHEREUM;
-			const response = await Moralis.EvmApi.nft.getWalletNFTs({
-				address,
-				chain,
-			});
-			const list = response.toJSON().result;
+			const list = await getWalletNFTs(address);
 
 			const parsedList = list
 				.filter((n) => !n.possible_spam && n.metadata)

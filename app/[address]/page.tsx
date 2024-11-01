@@ -4,7 +4,6 @@ import { useParams, useRouter } from "next/navigation";
 import NFTList from "../../components/pages/address/nfts/nft-list";
 import TokensList from "../../components/pages/address/tokens/token-list";
 import { useEffect, useState } from "react";
-import Moralis from "moralis";
 import Jazzicon, { jsNumberForAddress } from "react-jazzicon";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
@@ -13,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import { isENSAddress, isValidAddress } from "@/lib/utils";
+import { initializeAPI, resolveENSDomain } from "../actions";
 
 export default function AddressPage() {
 	const params = useParams();
@@ -29,11 +29,7 @@ export default function AddressPage() {
 		}
 
 		const initialize = async () => {
-			if (!Moralis.Core.isStarted) {
-				await Moralis.start({
-					apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-				});
-			}
+			await initializeAPI();
 
 			if (!isENSAddress(params.address as string)) {
 				setAddress(params.address as string);
@@ -42,12 +38,9 @@ export default function AddressPage() {
 
 			// Try to resolve ENS
 			try {
-				const response = await Moralis.EvmApi.resolve.resolveENSDomain({
-					domain: params.address as string,
-				});
-				const json = response?.toJSON();
-				if (json?.address) {
-					setAddress(json?.address);
+				const address = await resolveENSDomain(params.address as string);
+				if (address) {
+					setAddress(address);
 				} else {
 					setError("Your ENS cannot be resolved");
 				}
