@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getWalletNFTs } from "@/app/actions";
+import { Frown } from "lucide-react";
 
 interface AddressParams {
 	address: string;
@@ -83,20 +84,28 @@ export default function NFTList({ address }: AddressParams) {
 				) : (
 					<div className="min-w-full bg-slate-200 dark:bg-slate-800  overflow-hidden rounded-2xl">
 						<div className="items-center space-y-1 px-4 py-4 sm:px-6 sm:py-4 mx-auto max-w-xs xl:max-w-sm">
-							<div className="py-2 text-center text-sm text-muted-foreground">
-								NFT {current} of {count}
-							</div>
-							<Carousel setApi={setApi} className="w-full">
-								<CarouselContent>
-									{nfts.map((nft: EvmNFT, index) => (
-										<CarouselItem key={index}>
-											<NFT nft={nft} key={index} />
-										</CarouselItem>
-									))}
-								</CarouselContent>
-								<CarouselPrevious />
-								<CarouselNext />
-							</Carousel>
+							{nfts.length ? (
+								<>
+									<div className="py-2 text-center text-sm text-muted-foreground">
+										NFT {current} of {count}
+									</div>
+									<Carousel setApi={setApi} className="w-full">
+										<CarouselContent>
+											{nfts.map((nft: EvmNFT, index) => (
+												<CarouselItem key={index}>
+													<NFT nft={nft} key={index} />
+												</CarouselItem>
+											))}
+										</CarouselContent>
+										<CarouselPrevious />
+										<CarouselNext />
+									</Carousel>
+								</>
+							) : (
+								<div className=" flex flex-row items-center justify-center gap-4 md:h-24 ">
+									You have no NFTs <Frown />
+								</div>
+							)}
 						</div>
 					</div>
 				)}
