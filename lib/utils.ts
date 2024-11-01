@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
 }
 
-export const getUSDBalance = (tokens: EvmToken[]) => tokens.reduce((total: number, obj: EvmToken) => obj.usdValue + total, 0);
+export const getUSDBalance = (tokens: EvmToken[]) => tokens.reduce((total: number, obj: EvmToken) => obj.usd_value + total, 0);
 
 export const isENSAddress = (address: string) => {
     return address.endsWith(".eth");

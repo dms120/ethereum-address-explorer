@@ -6,7 +6,7 @@ export default function Token({ token, index }: { token: EvmToken; index: number
 	const [imageError, setImageError] = useState(false);
 
 	return (
-		<div key={token.tokenAddress} className={`my-2 mr-2 ${index > 6 ? "hidden" : "flex"}`}>
+		<div key={token.token_address} className={`my-2 mr-2 ${index > 6 ? "hidden" : "flex"}`}>
 			<div className="mx-1">
 				{token.thumbnail && !imageError ? (
 					<Image
@@ -28,7 +28,7 @@ export default function Token({ token, index }: { token: EvmToken; index: number
 			</div>
 
 			<span className="mx-0.5 text-md">
-				{Number(token.balanceFormatted).toPrecision(6)} {token.symbol}
+				{Number(token.balance_formatted).toPrecision(6)} {token.symbol}
 			</span>
 		</div>
 	);

@@ -8,11 +8,11 @@ export interface EvmToken {
 	name: string;
 	symbol: string;
 	decimals: number;
-	tokenAddress: string;
+	token_address: string;
 	thumbnail: string;
 	amount: number;
-	balanceFormatted: string;
-	usdValue: number;
+	balance_formatted: string;
+	usd_value: number;
 }
 
 interface AddressParams {
