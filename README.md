@@ -1,11 +1,13 @@
 ## Set environment variables
 
-NEXT_MORALIS_API_KEY= Key from Moralis
-NEXT_PUBLIC_PROJECT_ID=Reown Project ID
+```bash
+NEXT_MORALIS_API_KEY= Moralis API Key
+NEXT_PUBLIC_PROJECT_ID= Reown Project ID
+```
 
-## Getting Started
+## Run
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
