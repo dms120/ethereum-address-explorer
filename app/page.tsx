@@ -70,7 +70,7 @@ export default function Home() {
 							control={form.control}
 							name="walletAddress"
 							render={({ field }) => (
-								<FormItem className="w-full sm:w-auto flex justify-center">
+								<FormItem className="w-full sm:w-auto flex flex-col  flex-wrap text-center content-center">
 									<FormControl>
 										<Input
 											className="w-full max-w-[250px]"
