@@ -36,7 +36,7 @@ export const modal = createAppKit({
 		emailShowWallets: false,
 	},
 	themeVariables: {
-		"--w3m-accent": "#2563eb",
+		"--w3m-accent": "#3b82f6",
 	},
 });
 

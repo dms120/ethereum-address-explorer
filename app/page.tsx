@@ -54,7 +54,7 @@ export default function Home() {
 					"w-11/12 sm:w-[480px] m-2 sm:m-0  p-4 flex flex-col items-center justify-center space-y-5"
 				)}
 			>
-				<h1 className="flex text-xl font-bold ">Connect wallet to explore</h1>
+				<h1 className="flex text-xl font-bold text-center ">Connect wallet to explore</h1>
 				<w3m-button balance="hide" />
 				<span className="flex items-center justify-start gap-2 w-full">
 					<span className="h-[2px] w-full bg-[#f2f4f6]"></span>
@@ -62,15 +62,18 @@ export default function Home() {
 					<span className="h-[2px] w-full bg-[#f2f4f6]"></span>
 				</span>
 				<Form {...form}>
-					<form onSubmit={form.handleSubmit(handleSubmit)} className="flex  space-x-2">
+					<form
+						onSubmit={form.handleSubmit(handleSubmit)}
+						className="flex w-full sm:w-auto space-x-2 flex-col sm:flex-row gap-3 sm:gap-1 items-center"
+					>
 						<FormField
 							control={form.control}
 							name="walletAddress"
 							render={({ field }) => (
-								<FormItem>
+								<FormItem className="w-full sm:w-auto flex justify-center">
 									<FormControl>
 										<Input
-											className="w-[250px] "
+											className="w-full max-w-[250px]"
 											placeholder="Enter an Ethereum address or ENS"
 											{...field}
 										/>
@@ -82,7 +85,7 @@ export default function Home() {
 						<Button
 							disabled={loading}
 							type="submit"
-							className="rounded-full font-bold	dark:text-white	"
+							className="rounded-full font-bold dark:text-white max-w-fit"
 						>
 							{loading ? <ReloadIcon className="mr-2 h-4 w-4 animate-spin " /> : "Explore"}
 						</Button>
