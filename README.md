@@ -1,3 +1,7 @@
+A simple Ethereum Address explorer that shows address Tokens and NFTs.
+
+Uses Reown (WalletConnect) to connect a wallet and Morals APIs to retrieve information.
+
 ## Set environment variables
 
 ```bash
