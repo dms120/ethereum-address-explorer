@@ -64,16 +64,16 @@ export default function Home() {
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleSubmit)}
-						className="flex w-full sm:w-auto space-x-2 flex-col sm:flex-row gap-3 sm:gap-1 items-center"
+						className="flex w-full sm:w-auto space-x-2 flex-col sm:flex-row gap-3 sm:gap-0 items-center"
 					>
 						<FormField
 							control={form.control}
 							name="walletAddress"
 							render={({ field }) => (
-								<FormItem className="w-full sm:w-auto flex flex-col  flex-wrap text-center content-center">
+								<FormItem className="w-full flex flex-col  flex-wrap text-center content-center">
 									<FormControl>
 										<Input
-											className="w-full max-w-[250px]"
+											className="w-full sm:w-[250px] max-w-[250px]"
 											placeholder="Enter an Ethereum address or ENS"
 											{...field}
 										/>
